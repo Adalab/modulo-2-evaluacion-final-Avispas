@@ -1,0 +1,19 @@
+.page{
+    &__header{
+        display: flex;
+        align-items: center;
+        background-color: $color-navy;
+        justify-content: space-between;
+        padding: 5px;
+        &--imgLogo{
+            height: 70px;           
+        }
+        &--title{
+            font-family: $font-title;
+            font-weight:100;
+            text-align: right;
+            color: $color-yellow;
+            padding-right: 10px;
+        }
+    }
+}

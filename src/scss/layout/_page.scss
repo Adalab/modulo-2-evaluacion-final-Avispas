@@ -1,0 +1,72 @@
+.page {
+    &__main {
+        background-color: $color-black;
+    }
+}
+
+.browser {
+    padding: 20px;
+    &__div {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 20px;
+        &--input {
+            height: 35px;
+            border-radius: 5px;
+            padding-left: 15px;
+            background-color: #e0f4c6e1;
+            border: 2px solid $color-navy;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        &--btnSearch {
+           width: 80px;
+            height: 35px;
+            align-self: center;
+            border: 2px solid $color-navy;
+            border-radius: 5px;
+            background-color: $color-yellow;
+            color: $color-navy;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+    }
+    &__icon{
+        color: $color-yellow;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 15px;
+        text-align: center;
+    }
+}
+.portraits{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @media (min-width: 768px) {
+        display: flex;  
+        flex-direction: row;
+        justify-content: center;  
+        gap: 20px;    
+    }
+    &__divFavourite{
+        border: 5px solid $color-lightPurple;
+        height: 30vh;
+        @media (min-width: 768px) {
+            height: 70vh; //cambiar a auto
+            width: 35vw;   
+        }
+    }
+    &__divBrowser{
+        border: 5px solid $color-purple;
+        height: 70vh;
+        @media (min-width: 768px) {
+            height: 70vh; //cambiar a auto 
+            width: 65vh;
+        }
+    }
+}
