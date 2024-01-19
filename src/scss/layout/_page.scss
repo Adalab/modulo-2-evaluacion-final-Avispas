@@ -1,7 +1,9 @@
 .page {
     &__main {
         background-color: $color-black;
+        min-height: 100vh;
     }
+   
 }
 
 .browser {
@@ -60,16 +62,25 @@
     &__divFavourite{
         border: 5px solid $color-lightPurple;
         border-radius: 5px;
-        height: 30vh;
+        
         @media (min-width: 768px) {
-            height: 70vh; //cambiar a auto
-            width: 35vw;   
+    
+              
         }
         &--title{
             background-color: $color-lightPurple;
             font-family: 'Courier New', Courier, monospace;
             padding-left: 10px;
         }
+        &--ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap:10px;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
     }
     &__divBrowser{
         border: 5px solid $color-purple;

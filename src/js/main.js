@@ -51,7 +51,7 @@ function printAnimeHtml(arrayAnimeSearch) {
 }
 function printAnimeInfo(title, images, id) {
   let htmlCode = '';
-  htmlCode += `<li class="card  clicked" id="${id}">`;
+  htmlCode += `<li class="card  clicked js-color" id="${id}">`;
   htmlCode += `<img class="card__img" src="${images}" alt="${title}"></img>`;
   htmlCode += `<h3 class="card__name">${title}</h3>`;
   htmlCode += `</li>`;
@@ -82,6 +82,8 @@ function listenFavorites(ev) {
       images: currentTarget.querySelector('.card__img').src,
       id: currentTarget.id,
     };
+    currentTarget.classList.add('backgroundYellow');
     boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id);
+    
   }
 }
