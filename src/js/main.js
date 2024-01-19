@@ -95,10 +95,16 @@ function listenFavorites(ev) {
        
   }
 }
+const daleteFavorite = () => {
+  const favItems = document.getElementById(`${id}`);
+  for (const intem of favItems) {
+    intem.addEventListener('click',removeFavorite)
+  }
+}
 
-// function removeFavorite(id) {
-//   const favoriteElement = document.getElementById(id);
-//   if (favoriteElement) {
-//     favoriteElement.delete();
-//   }
-// }
+function removeFavorite(id) {
+  const favoriteElement = document.getElementById(id);
+  if (favoriteElement) {
+    favoriteElement.delete();
+  }
+}
