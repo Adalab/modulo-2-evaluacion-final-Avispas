@@ -9,6 +9,7 @@ let arrayAnimeSearch = [];
 let inputFilter = '';
 
 function getInput() {
+
   let inputText = document.getElementById('js-inputText').value.toLowerCase();
   inputFilter = inputText;
   console.log(inputFilter);
@@ -82,7 +83,22 @@ function listenFavorites(ev) {
       images: currentTarget.querySelector('.card__img').src,
       id: currentTarget.id,
     };
-    currentTarget.classList.add('backgroundYellow');
-    boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id);    
+    if (currentTarget.classList.contains('backgroundYellow')) {
+      currentTarget.classList.remove('backgroundYellow');
+      const favToRemove = document.getElementById(currentTarget.id);
+      favToRemove.remove();
+      // removeFavorite(filmFav.id);
+    } else {
+      currentTarget.classList.add('backgroundYellow');
+      boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id); 
+    }
+       
   }
 }
+
+// function removeFavorite(id) {
+//   const favoriteElement = document.getElementById(id);
+//   if (favoriteElement) {
+//     favoriteElement.delete();
+//   }
+// }
