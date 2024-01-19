@@ -15,10 +15,14 @@
             height: 35px;
             border-radius: 5px;
             padding-left: 15px;
-            background-color: #e0f4c6e1;
-            border: 2px solid $color-navy;
+            background-color: $color-yellow;
+            border: 3px solid $color-navy;
             font-family: monospace;
             font-size: 16px;
+            @media (min-width: 768px) {
+                width: 70vh;
+                align-self: center;
+            }
         }
 
         &--btnSearch {
@@ -55,6 +59,7 @@
     }
     &__divFavourite{
         border: 5px solid $color-lightPurple;
+        border-radius: 5px;
         height: 30vh;
         @media (min-width: 768px) {
             height: 70vh; //cambiar a auto
@@ -68,11 +73,8 @@
     }
     &__divBrowser{
         border: 5px solid $color-purple;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 10px;
+        border-radius: 5px;
+        height: max-content;
         @media (min-width: 768px) {
             // height: 70vh; //cambiar a auto 
             // width: 65vh;
@@ -82,19 +84,41 @@
             font-family: 'Courier New', Courier, monospace;
             padding-left: 10px;
         }
+        &--ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap:10px;
+            justify-content: center;
+            padding-top: 10px;
+        }
     }
 }
 .card {
     border: 2px solid $color-purple;
     background-color: $color-purple;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap; 
-    
-    // &__img{
-    //     height: 100px;}
+    flex-wrap: wrap;   
+    width: 45vw;
+    @media (min-width: 768px) {
+        width: 27vh;
+    }  
+    &__img{
+       width: 43vw;
+       align-self: center;
+       @media (min-width: 768px) {
+        width: 25vh;
+        padding-top: 5px;
+    }
+    }
     &__name{
         text-wrap: wrap;
+        font-family: monospace;
 
     }
+}
+.backgroundYellow{
+    background-color: $color-yellow;
 }
