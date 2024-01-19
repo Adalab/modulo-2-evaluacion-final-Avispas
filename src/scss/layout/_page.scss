@@ -80,7 +80,10 @@
             justify-content: center;
             padding-top: 10px;
         }
-
+        &--ul li {
+            background-color: $color-yellow;
+        }
+    
     }
     &__divBrowser{
         border: 5px solid $color-purple;

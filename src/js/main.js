@@ -83,7 +83,6 @@ function listenFavorites(ev) {
       id: currentTarget.id,
     };
     currentTarget.classList.add('backgroundYellow');
-    boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id);
-    
+    boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id);    
   }
 }
