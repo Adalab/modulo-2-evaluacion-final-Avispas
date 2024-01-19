@@ -60,13 +60,41 @@
             height: 70vh; //cambiar a auto
             width: 35vw;   
         }
+        &--title{
+            background-color: $color-lightPurple;
+            font-family: 'Courier New', Courier, monospace;
+            padding-left: 10px;
+        }
     }
     &__divBrowser{
         border: 5px solid $color-purple;
-        height: 70vh;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
         @media (min-width: 768px) {
-            height: 70vh; //cambiar a auto 
-            width: 65vh;
+            // height: 70vh; //cambiar a auto 
+            // width: 65vh;
         }
+        &--title{
+            background-color: $color-purple;
+            font-family: 'Courier New', Courier, monospace;
+            padding-left: 10px;
+        }
+    }
+}
+.card {
+    border: 2px solid $color-purple;
+    background-color: $color-purple;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; 
+    
+    // &__img{
+    //     height: 100px;}
+    &__name{
+        text-wrap: wrap;
+
     }
 }

@@ -1,21 +1,23 @@
 <main class="page__main">
     <section class="browser">
         <div class="browser__div">
-        <input type="text" class="browser__div--input js-input">
-        <button class="browser__div--btnSearch js-btnSearch">Search</button>
+            <p class="space"></p>
+            <input type="text" class="browser__div--input" id="js-inputText">
+            <button class="browser__div--btnSearch js-btnSearch">Search</button>
         </div>
-        <i class="fa-regular fa-trash-can fa-bounce browser__icon"></i> 
+        <i class="fa-regular fa-trash-can fa-bounce browser__icon"></i>
         <span class="browser__icon">
             Remove all your favorites and browsers
-        </span> 
-              
+        </span>
+
     </section>
     <section class="portraits">
-        <div class="portraits__divFavourite">
-
+        <div class="portraits__divFavourite js-printBrowser">
+            <h2 class="portraits__divFavourite--title">Favourites</h2>
+            
         </div>
-        <div class="portraits__divBrowser">
-
+        <div class="portraits__divBrowser js-pasteBrowsers">
+            <h2 class="portraits__divBrowser--title">Search results</h2>
         </div>
     </section>
 </main>
