@@ -82,6 +82,8 @@
         }
         &--ul li {
             background-color: $color-yellow;
+            align-items: center;
+            border-color: $color-yellow;
         }
     
     }
