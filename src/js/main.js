@@ -5,6 +5,7 @@ const btnSearch = document.querySelector('.js-btnSearch');
 const boxBrowsers = document.querySelector('.js-browsers-list');
 const boxFavs = document.querySelector('.js-favs-list');
 const animemixPic = `../public/images/animemix.webp`;
+const btnReset = document.querySelector('.js-reset');
 
 let filmsAnime = [];
 let arrayAnimeSearch = [];
@@ -12,12 +13,31 @@ let arrayFilmFav = [];
 let arrayFilmFav2 = [];
 let inputFilter = '';
 
+function resetAll() {
+   // Limpiar el contenido de las listas
+   boxBrowsers.innerHTML = '';
+   boxFavs.innerHTML = '';
+
+  //  Eliminar las clases de fondo amarillo
+   const clickedElements = document.querySelectorAll('.clicked');
+   clickedElements.forEach((element) => {
+      element.classList.remove('backgroundYellow');
+   });
+
+   // Limpiar el array de favoritos
+   arrayFilmFav = [];
+
+   // Limpiar el local storage
+   localStorage.removeItem('clicked');
+}
+btnReset.addEventListener('click', resetAll)
 // value del input array fav y arrav buscFilter, y de la busqueda a vacio; y renderizar, limparlocal storage
 
 function getLocalStorage() {
   arrayFilmFav2 = JSON.parse(localStorage.getItem('clicked'));
   console.log(arrayFilmFav2);
-  if (arrayFilmFav2.length >0) {
+  if(arrayFilmFav2 !==null){
+  if (arrayFilmFav2.length > 0) {
     console.log(arrayFilmFav2);
     for (let itemArrayFav of arrayFilmFav2) {
       console.log(itemArrayFav);
@@ -29,9 +49,9 @@ function getLocalStorage() {
     }
   }
 }
+}
 
 getLocalStorage();
-
 
 // con un condicional si hay cosas las pintas, y si no hay cosas pide info a la api
 
@@ -69,7 +89,10 @@ function handleInfo(inputFilter) {
       filmsAnime = info.data;
       for (const filmAnime of filmsAnime) {
         console.log(filmAnime.images.jpg.image_url);
-        if (filmAnime.images.jpg.image_url !== `https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png`){          
+        if (
+          filmAnime.images.jpg.image_url !==
+          `https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png`
+        ) {
           arrayAnimeSearch.push({
             title: filmAnime.title,
             images: filmAnime.images.jpg.image_url,
@@ -82,7 +105,6 @@ function handleInfo(inputFilter) {
             id: filmAnime.mal_id,
           });
         }
-      
       }
       printAnimeHtml(arrayAnimeSearch);
       dynamicElements();
@@ -131,7 +153,6 @@ function listenFavorites(ev) {
     if (arrayFilmFav === !null) {
       const favIndex = arrayFilmFav.findIndex((fav) => fav.id === filmFav.id);
       console.log(favIndex);
-
     }
 
     console.log(filmFav);
@@ -172,7 +193,7 @@ function deleteFavorite(ev) {
   }
   const favIndex = arrayFilmFav.findIndex((fav) => fav.id === takeOfYellow.id);
   currentTarget.remove();
-  arrayFilmFav.splice(favIndex,1);
+  arrayFilmFav.splice(favIndex, 1);
   console.log(arrayFilmFav);
   localStorageFav();
 }
