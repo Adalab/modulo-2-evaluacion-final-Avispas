@@ -8,7 +8,15 @@ const boxFavs = document.querySelector('.js-favs-list');
 
 let filmsAnime = [];
 let arrayAnimeSearch = [];
+let arrayFilmFav = []
 let inputFilter = '';
+
+
+// function getLocalStorage (title, images, id) {
+//   arrayFilmFav = JSON.parse(localStorage.getItem('clicked'));
+//   printFavInfo(title, images, id);
+// }
+// getLocalStorage();
 
 function getInput() {
   const inputText = document.getElementById('js-inputText').value.toLowerCase();
@@ -24,14 +32,12 @@ const dynamicElements = () =>{
   }
 }
 const dynamicFavs = () =>{
-  const favsSelected = document.querySelectorAll('.js-color');
+  const favsSelected = document.querySelectorAll('.js-fav');
   console.log(favsSelected);
   for ( const favSelected of favsSelected){
     favSelected.addEventListener('click', deleteFavorite);
   }
 }
-
-
 //console.log(inputFilter);
 btnSearch.addEventListener('click', getInput);
 
@@ -52,14 +58,13 @@ function handleInfo(inputFilter) {
         });
       }
       // guardar la información en el almacenamiento local
-      localStorage.setItem('animeData', JSON.stringify(arrayAnimeSearch));
+
       printAnimeHtml(arrayAnimeSearch);
-      dynamicElements();
-      dynamicFavs();
+      dynamicElements();      
       console.log(arrayAnimeSearch);
     });
-
 }
+
 // print
 function printAnimeHtml(arrayAnimeSearch) {
   boxBrowsers.innerHTML = '';
@@ -76,54 +81,54 @@ function printAnimeInfo(title, images, id) {
   htmlCode += `</li>`;
   return htmlCode;
 }
+function printFavInfo(title, images, id) {
+  let htmlCode = '';
+  htmlCode += `<li class="card  clicked js-fav" id="${id}">`;
+  htmlCode += `<img class="card__img" src="${images}" alt="${title}"></img>`;
+  htmlCode += `<h3 class="card__name">${title}</h3>`;
+  htmlCode += `</li>`;
+  return htmlCode;
+}
 
 
 function listenFavorites(ev) {
   const currentTarget = ev.currentTarget;
   console.log(currentTarget);
   if (currentTarget.classList.contains('clicked')) {
-    const filmFav = {
+    let filmFav = {
       title: currentTarget.querySelector('.card__name').textContent,
       images: currentTarget.querySelector('.card__img').src,
       id: currentTarget.id
     }; 
-    console.log(filmFav);
+    arrayFilmFav.push(filmFav);
+    console.log(arrayFilmFav);
     if (currentTarget.classList.contains('backgroundYellow')) {
       currentTarget.classList.remove('backgroundYellow');
       const favToRemove = document.getElementById(filmFav.id);
-      favToRemove.remove();
-      // removeFavorite(filmFav.id);
+      favToRemove.remove();     
+      
     } else {
       currentTarget.classList.add('backgroundYellow');
-      boxFavs.innerHTML += printAnimeInfo(filmFav.title, filmFav.images, filmFav.id); 
-
-    }
-       
-  }
+      boxFavs.innerHTML += printFavInfo(filmFav.title, filmFav.images, filmFav.id);
+      dynamicFavs();
+      localStorageFav(); 
+    } 
+ 
+  } 
+  
 }
 
+function localStorageFav () {
+  localStorage.setItem('clicked', JSON.stringify(arrayFilmFav));
+}
 
-
-
-// function deleteFavorite(ev) {
-//   const currentTarget = ev.currentTarget;
-//   console.log(currentTarget);
-//   if (currentTarget.classList.contains('backgroundYellow')) {
-//     currentTarget.remove('backgroundYellow')
-//   }
-// }
-
-// const favItems = boxFavs.children;
-// console.log(favItems);
-// for (const intem of favItems) {
-//   intem.addEventListener('click', deleteFavorite)
-// }  
-
-// console.log(favItems);
-
-// const favContainer = document.querySelector('.js-favs-list');
-// favContainer.addEventListener('click', function(event) {
-//   if (event.currentTargettarget.classList.contains('card')) {
-//     customElements.remove();
-//   }
-// })
+function deleteFavorite(ev) {
+  const currentTarget = ev.currentTarget;
+  const takeOfYellow = document.querySelectorAll('.backgroundYellow')
+  for (let oneYellow of takeOfYellow) {
+    if (currentTarget.id === oneYellow.id) {
+      oneYellow.classList.remove('backgroundYellow')
+    }
+  }
+  currentTarget.remove();
+}
