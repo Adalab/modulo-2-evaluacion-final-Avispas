@@ -105,7 +105,12 @@ function listenFavorites(ev) {
     if (currentTarget.classList.contains('backgroundYellow')) {
       currentTarget.classList.remove('backgroundYellow');
       const favToRemove = document.getElementById(filmFav.id);
-      favToRemove.remove();     
+      localStorage.removeItem('clicked', JSON.stringify(currentTarget));
+      favToRemove.remove();  
+      const numb = arrayFilmFav.indexOf(favToRemove); 
+      arrayFilmFav.splice(numb,1);
+      console.log(arrayFilmFav);
+      
       
     } else {
       currentTarget.classList.add('backgroundYellow');
